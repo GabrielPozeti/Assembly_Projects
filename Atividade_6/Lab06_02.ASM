@@ -6,7 +6,7 @@ TITLE contarAsteriscos
     MSG DB 13, 10, 'Por favor, digite quantos caracteres quiser. Pressione ENTER para finalizar: $'
     MSG2 DB 13, 10, 'Aqui estao os caracteres como asterisco: $'
     ASTERISCO DB '*'      ; Caractere asterisco a ser exibido
-    ENTER DB 13           ; Código ASCII para Enter (Carriage Return)
+    ENTER DB 13           ; Código ASCII para Enter
 
 .CODE
 MAIN PROC
@@ -19,8 +19,8 @@ MAIN PROC
     LEA DX, MSG
     INT 21h
 
-    ; Zera o contador no registrador CL
-    MOV CL, 0
+  
+    MOV CL, 0   ; Zera o contador no registrador CL
 
 LER_CARACTERES:
     ; Lê o caractere do teclado
@@ -66,3 +66,8 @@ FINALIZAR:
 
 MAIN ENDP
 END MAIN
+
+
+;A diferença entre este programa e o anterior é de que no segundo programa
+;foi criada uma variável ENTER DB 13 para armazenar o código do Enter. 
+;No primeiro programa, o valor 13 é diretamente comparado no comando CMP AL, 13
